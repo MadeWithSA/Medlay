@@ -1,0 +1,1081 @@
+:root {
+      --forest-deep: #141b11;
+      --forest-bar: #1c2418;
+      --forest-glass: rgba(20, 27, 17, 0.86);
+      --cream-btn: #e8dfd1;
+      --cream-hover: #f4ede2;
+      --champagne: #c9a96e;
+      --gold-light: #e6cfa3;
+      --ink: #181a17;
+      --muted: #666b63;
+      --border-light: #e8e5df;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: #ffffff;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background: var(--forest-bar);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 11.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 9px 16px;
+      position: relative;
+      z-index: 1002;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Main Navbar */
+    .navbar {
+      position: fixed;
+      top: 33px;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 44px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      color: #ffffff;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .navbar.scrolled {
+      top: 0;
+      background: rgba(20, 27, 17, 0.92);
+      backdrop-filter: blur(16px);
+      padding: 14px 44px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+      border-bottom: 1px solid rgba(232, 223, 209, 0.12);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-link {
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      position: relative;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: var(--sans);
+      transition: color 0.25s;
+    }
+    .nav-link:hover { color: var(--gold-light); }
+
+    .dropdown { position: relative; }
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 0;
+      min-width: 210px;
+      background: rgba(20, 27, 17, 0.96);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(232, 223, 209, 0.16);
+      border-radius: 10px;
+      padding: 10px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all 0.25s ease;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-item {
+      display: block;
+      padding: 10px 20px;
+      color: rgba(255, 255, 255, 0.88);
+      text-decoration: none;
+      font-size: 12.5px;
+      letter-spacing: 0.08em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .dropdown-item:hover {
+      background: rgba(232, 223, 209, 0.1);
+      color: var(--gold-light);
+    }
+
+    /* Botanical Logo */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #ffffff;
+      font-family: var(--serif);
+      font-size: 31px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .brand-logo svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--gold-light);
+      fill: none;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+    .icon-action {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--sans);
+      font-size: 11.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.25s, color 0.25s;
+    }
+    .icon-action:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--gold-light);
+    }
+    .locale-pill {
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+    .cart-badge {
+      background: var(--cream-btn);
+      color: var(--forest-deep);
+      font-weight: 600;
+      font-size: 10.5px;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+
+    /* Locale Popover */
+    .locale-wrap { position: relative; }
+    .locale-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 12px);
+      width: 230px;
+      background: rgba(20, 27, 17, 0.96);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(232, 223, 209, 0.18);
+      border-radius: 12px;
+      padding: 14px;
+      display: none;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+      color: #fff;
+    }
+    .locale-menu.open { display: block; }
+    .locale-group-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 8px;
+    }
+    .locale-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .locale-opt {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 11px;
+      padding: 6px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .locale-opt.active, .locale-opt:hover {
+      background: var(--cream-btn);
+      color: var(--forest-deep);
+      border-color: var(--cream-btn);
+      font-weight: 600;
+    }
+
+    /* Fullscreen Hero Film (100vh) — looping video */
+    .hero {
+      position: relative;
+      height: 100vh;
+      height: 100svh;
+      min-height: 620px;
+      width: 100%;
+      overflow: hidden;
+      background: #10160d;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      text-align: left;
+    }
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 62% 30%;
+      opacity: 0;
+      transition: opacity 1.4s ease-in-out;
+      will-change: opacity;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+    .hero-video.ready { opacity: 1; }
+    .hero-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 62% 30%;
+    }
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(0deg, rgba(16, 22, 13, 0.82) 0%, rgba(16, 22, 13, 0.46) 32%, rgba(16, 22, 13, 0) 62%),
+        linear-gradient(180deg, rgba(16, 22, 13, 0.38) 0%, rgba(16, 22, 13, 0) 22%);
+      z-index: 2;
+    }
+    #sparkle-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      max-width: 760px;
+      padding: 0 56px 118px;
+      color: #ffffff;
+    }
+    .hero-eyebrow {
+      font-size: 11.5px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #f6e7c4;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+      margin-bottom: 18px;
+      display: inline-block;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.3rem, 4.6vw, 4.1rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+      margin-bottom: 20px;
+      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 540px;
+      margin: 0 0 30px;
+    }
+    .btn-cream {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cream-btn);
+      color: var(--forest-deep);
+      padding: 15px 36px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-cream:hover {
+      background: var(--cream-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Hero Film Controls */
+    .hero-controls {
+      position: absolute;
+      bottom: 104px;
+      right: 44px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .film-toggle {
+      background: rgba(20, 27, 17, 0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .film-toggle:hover { background: rgba(20, 27, 17, 0.8); }
+
+    /* Best Sellers Pure White Section */
+    .bestsellers-section {
+      padding: 96px 44px 80px;
+      max-width: 1440px;
+      margin: 0 auto;
+      background: #ffffff;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 54px;
+    }
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.1rem, 3.6vw, 3.1rem);
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .bs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+    .bs-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 22px 20px 26px;
+      text-align: center;
+      position: relative;
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bs-card:hover {
+      border-color: #d3c6b2;
+      box-shadow: 0 20px 44px rgba(24, 26, 23, 0.07);
+      transform: translateY(-4px);
+    }
+    .launch-pill {
+      display: inline-block;
+      background: #f5f1ea;
+      color: #6b5839;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .bs-img-stage {
+      height: 270px;
+      border-radius: 4px;
+      background: radial-gradient(ellipse 62% 56% at 50% 58%, #f4ecdc 0%, rgba(251, 248, 242, 0.7) 55%, rgba(255, 255, 255, 0) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      position: relative;
+      cursor: pointer;
+    }
+    .bs-img-stage img {
+      max-height: 248px;
+      max-width: 92%;
+      image-rendering: auto;
+      object-fit: contain;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.08));
+    }
+    .bs-card:hover .bs-img-stage img {
+      transform: scale(1.08);
+    }
+    .bs-collection {
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .bs-name {
+      font-family: var(--serif);
+      font-size: 21px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .bs-specs {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .bs-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .price-old {
+      font-size: 12.5px;
+      color: #9ba098;
+      text-decoration: line-through;
+    }
+    .price-now {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .swatches {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .swatch {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .swatch.active {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+      transform: scale(1.1);
+    }
+    .btn-outline-dark {
+      width: 100%;
+      padding: 12px 16px;
+      background: transparent;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-outline-dark:hover {
+      background: var(--forest-deep);
+      border-color: var(--forest-deep);
+      color: #ffffff;
+    }
+
+    /* 3-Column Guarantees Strip */
+    .guarantees-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 76px;
+      padding-top: 56px;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
+    }
+    .guarantee-item svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--champagne);
+      fill: none;
+      margin-bottom: 14px;
+    }
+    .guarantee-item h4 {
+      font-family: var(--serif);
+      font-size: 21px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .guarantee-item p {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 310px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Continuous Vertical Botanical Panorama Showcase */
+    .panorama-intro {
+      background: var(--forest-deep);
+      color: #ffffff;
+      text-align: center;
+      padding: 72px 24px 54px;
+    }
+    .panorama-intro h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .panorama-intro p {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .panorama-wrapper {
+      position: relative;
+      width: 100%;
+      background: #0d130a;
+      overflow: hidden;
+    }
+    .panorama-bg {
+      display: block;
+      width: 100%;
+      height: auto;
+      user-select: none;
+    }
+
+    .scene {
+      position: relative;
+      background: #0d130a;
+      scroll-margin-top: 62px;
+    }
+    .scene-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #0d130a;
+    }
+    .scene-stage > img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+    }
+    .scene-hotspots {
+      position: absolute;
+      inset: 0;
+    }
+    .scene .tier-label { top: 7%; }
+
+    /* Floating Narrative Overlays on Panorama */
+    .tier-label {
+      position: absolute;
+      left: 5%;
+      z-index: 6;
+      max-width: 340px;
+      background: rgba(16, 22, 13, 0.62);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(232, 223, 209, 0.22);
+      padding: 18px 22px;
+      border-radius: 10px;
+      color: #ffffff;
+      pointer-events: none;
+    }
+    .tier-label span {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .tier-label h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .tier-label p {
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    /* Interactive Jewelry Hotspot on Panorama */
+    .hotspot {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .hotspot:hover { z-index: 30; }
+
+    /* Optical Zoom Cutout + Pulse Ring over the Jewelry in Panorama */
+    .hotspot-lens {
+      width: clamp(68px, 8.5vw, 128px);
+      height: clamp(68px, 8.5vw, 128px);
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+    }
+    .hotspot-ring {
+      position: absolute;
+      inset: 14%;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.72);
+      box-shadow: 0 0 18px rgba(230, 207, 163, 0.55);
+      animation: pulseRing 2.8s infinite ease-in-out;
+      transition: opacity 0.3s;
+    }
+    @keyframes pulseRing {
+      0%, 100% { transform: scale(0.95); opacity: 0.65; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+    .hotspot-preview-cutout {
+      width: 82%;
+      height: 82%;
+      object-fit: contain;
+      opacity: 0;
+      transform: scale(0.92);
+      transition: all 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 16px rgba(230, 207, 163, 0.5));
+      pointer-events: none;
+    }
+    .hotspot:hover .hotspot-lens {
+      transform: scale(1.18);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(20, 27, 17, 0.35) 70%, transparent 100%);
+    }
+    .hotspot:hover .hotspot-ring {
+      opacity: 0;
+    }
+    .hotspot:hover .hotspot-preview-cutout {
+      opacity: 1;
+      transform: scale(1.16);
+    }
+
+    /* Always-visible "от [Price]" pill beneath each jewelry piece */
+    .hotspot-from-tag {
+      margin-top: 4px;
+      background: rgba(20, 27, 17, 0.84);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(232, 223, 209, 0.38);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      transition: all 0.3s ease;
+    }
+    .hotspot:hover .hotspot-from-tag {
+      background: var(--cream-btn);
+      color: var(--forest-deep);
+      border-color: var(--cream-btn);
+      font-weight: 600;
+    }
+
+    /* Hover-revealed Frosted Glass Detail Card underneath */
+    .hotspot-card {
+      position: absolute;
+      top: calc(100% + 10px);
+      width: 256px;
+      background: rgba(20, 27, 17, 0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(232, 223, 209, 0.26);
+      border-radius: 12px;
+      padding: 16px;
+      color: #ffffff;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px) scale(0.96);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
+    }
+    .hotspot:hover .hotspot-card,
+    .hotspot.active .hotspot-card {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+    .hotspot-card .hc-badge {
+      display: inline-block;
+      background: rgba(232, 223, 209, 0.16);
+      color: var(--gold-light);
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .hotspot-card img {
+      width: 84px;
+      height: 84px;
+      object-fit: contain;
+      margin: 0 auto 8px;
+      display: block;
+      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45));
+    }
+    .hotspot-card h5 {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .hotspot-card p {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 10px;
+    }
+    .hotspot-card .hc-price {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .hotspot-card .hc-btn {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--cream-btn);
+      color: var(--forest-deep);
+      border: none;
+      border-radius: 4px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .hotspot-card .hc-btn:hover { background: #ffffff; }
+
+    /* Forest Floor Finale (Our Mission & Plant Trees) */
+    .forest-finale {
+      position: relative;
+      min-height: 640px;
+      background: url('/assets/panoramas/forest-moss-finale.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 96px 44px;
+    }
+    .forest-finale::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13, 19, 10, 0.65) 0%, rgba(20, 27, 17, 0.78) 100%);
+    }
+    .finale-grid {
+      position: relative;
+      z-index: 2;
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+    }
+    .finale-card {
+      background: rgba(20, 27, 17, 0.78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(232, 223, 209, 0.2);
+      border-radius: 12px;
+      padding: 46px 42px;
+      color: #ffffff;
+    }
+    .finale-card span {
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .finale-card h3 {
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .finale-card p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 28px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--forest-deep);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 76px 44px 36px;
+      border-top: 1px solid rgba(232, 223, 209, 0.12);
+    }
+    .footer-grid {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 44px;
+      padding-bottom: 54px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .footer h4 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+    .footer a {
+      display: block;
+      color: rgba(255, 255, 255, 0.72);
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .footer a:hover { color: var(--gold-light); }
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .footer-bottom {
+      max-width: 1360px;
+      margin: 26px auto 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.52);
+    }
+
+    /* Modals & Slide-over Bag */
+    .overlay-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 14, 8, 0.72);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .overlay-backdrop.open { display: flex; }
+
+    .modal-box {
+      background: #ffffff;
+      color: var(--ink);
+      border-radius: 12px;
+      max-width: 780px;
+      width: 100%;
+      padding: 36px;
+      position: relative;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .config-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .config-stage {
+      background: #faf9f6;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .config-stage img {
+      max-height: 240px;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.12));
+    }
+    .option-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 18px;
+    }
+    .opt-pill {
+      padding: 8px 14px;
+      border: 1px solid var(--border-light);
+      background: #fff;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .opt-pill.active {
+      background: var(--forest-deep);
+      color: #fff;
+      border-color: var(--forest-deep);
+    }
+
+    /* Slide-over Bag */
+    .bag-drawer {
+      position: fixed;
+      top: 0;
+      right: -440px;
+      width: 100%;
+      max-width: 420px;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 2100;
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      transition: right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .bag-drawer.open { right: 0; }
+    .bag-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bag-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+    }
+    .bag-item {
+      display: flex;
+      gap: 14px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border-light);
+      align-items: center;
+    }
+    .bag-item img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      background: #faf9f6;
+      border-radius: 8px;
+      padding: 6px;
+    }
+    .bag-footer {
+      padding: 22px 24px;
+      border-top: 1px solid var(--border-light);
+      background: #faf9f6;
+    }
+
+    /* Floating Concierge Button */
+    .concierge-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1500;
+      background: var(--forest-deep);
+      color: var(--cream-btn);
+      border: 1px solid rgba(232, 223, 209, 0.3);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (max-width: 1024px) {
+      .bs-grid { grid-template-columns: repeat(2, 1fr); }
+      .finale-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-left { display: none; }
+      .navbar { grid-template-columns: auto 1fr; padding: 14px 20px; }
+    }
+    @media (max-width: 640px) {
+      .bs-grid { grid-template-columns: 1fr; }
+      .guarantees-strip { grid-template-columns: 1fr; }
+      .config-layout { grid-template-columns: 1fr; }
+      .hero-content { padding: 0 22px 96px; }
+      .hero-controls { right: 18px; bottom: auto; top: 150px; }
+      .hero-video, .hero-poster { object-position: 74% 30%; }
+      .scene .tier-label {
+        position: static;
+        max-width: none;
+        border-radius: 0;
+        border: 0;
+        border-top: 1px solid rgba(232, 223, 209, 0.16);
+        background: var(--forest-deep);
+        backdrop-filter: none;
+        padding: 18px 22px 22px;
+      }
+      .tier-label h3 { font-size: 22px; }
+      .hotspot-lens { width: 58px; height: 58px; }
+      .hotspot-from-tag { display: none; }
+    }
